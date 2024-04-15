@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  eco-elegibility-api:
+    container_name: eco-elegibility-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    depends_on:
+      - dynamodb-local
+    entrypoint: ["/app/entrypoint.sh"]
+    environment:
+      ENVIRONMENT: ${ENVIRONMENT}
+      IS_SERVERLESS: ${IS_SERVERLESS}
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-dbPath", "./data"]
+    volumes:
+      - "./dynamodb_local_data:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
