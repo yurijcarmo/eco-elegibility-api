@@ -1,0 +1,61 @@
+service: nestjs-serverless
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+
+resources:
+  Resources:
+    ClientEligibilityTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: "documentNumber"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "documentNumber"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
+functions:
+  app:
+    handler: dist/main.handler
+    events:
+      - http:
+          path: client
+          method: post
+          private: false
+      - http:
+          path: client
+          method: get
+          private: false
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+custom:
+  tableName: ${env:DYNAMO_DB_TABLE_CLIENT_ELIGIBILITY}
+  serverless-offline:
+    httpPort: 3001
+  dotenv:
+    path: '.env.${env:ENVIRONMENT}'
+
+package:
+  individually: true
+  excludeDevDependencies: true
+  patterns:
+    - '!node_modules/**'
+    - '!test/**'
+    - '!.gitignore'
+    - '!package.json'
+    - '!package-lock.json'
+    - 'dist/**'
+
