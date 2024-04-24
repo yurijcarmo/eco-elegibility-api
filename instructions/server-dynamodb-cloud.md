@@ -15,7 +15,7 @@ docker-compose --env-file .env.dev.server down (se estiver em execução)
 docker-compose --env-file .env.prod.server up
 ```
 
-docker-compose --env-file .env.prod up --build: Executa a aplicação em um servidor tradicional, conectando-se ao DynamoDB hospedado na nuvem AWS.
+docker-compose --env-file .env.prod up --build: Executa a aplicação em um servidor, conectando-se ao DynamoDB hospedado na nuvem AWS.
 
 4. Utilize uma ferramenta de API testing, como Postman ou Insomnia, para acessar os endpoints:
 

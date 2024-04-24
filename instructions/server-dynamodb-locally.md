@@ -6,7 +6,7 @@ docker-compose --env-file .env.dev.server down (se estiver em execução)
 docker-compose --env-file .env.prod.server down (se estiver em execução)
 docker-compose --env-file .env.dev.server up
 ```
-docker-compose --env-file .env.dev.server up: Executa a aplicação em um servidor tradicional, conectando-se ao DynamoDB configurado em modo local (offline).
+docker-compose --env-file .env.dev.server up: Executa a aplicação em um servidor, conectando-se ao DynamoDB configurado em modo local (offline).
 
 3. Utilize uma ferramenta de API testing, como Postman ou Insomnia, para acessar os endpoints:
 

@@ -100,15 +100,15 @@ Atenção: Certifique-se de usar um CPF ou CNPJ válido ao fazer os testes, pois
 
 - Instruções para executar como Serverless Offline: [serverless-offline](./instructions/serverless-offline.md)
 
-#### Localmente (Servidor Tradicional) – Dynamodb Local:
+#### Localmente (Servidor) – Dynamodb Local:
 
-- Executa a aplicação em um servidor tradicional, conectando-se ao DynamoDB configurado em modo local (offline).
+- Executa a aplicação em um servidor, conectando-se ao DynamoDB configurado em modo local (offline).
 
 - Instruções para executar como Server Local + DynamoDB Local: [server-dynamodb-locally](./instructions/server-dynamodb-locally.md)
 
-#### Localmente (Servidor Tradicional) – Dynamodb na cloud:
+#### Localmente (Servidor) – Dynamodb na cloud:
 
-- Executa a aplicação em um servidor tradicional, conectando-se ao DynamoDB hospedado na nuvem AWS.
+- Executa a aplicação em um servidor, conectando-se ao DynamoDB hospedado na nuvem AWS.
 
 - Instruções para executar como Server Local + DynamoDB na nuvem: [server-dynamodb-cloud](./instructions/server-dynamodb-cloud.md)
 
