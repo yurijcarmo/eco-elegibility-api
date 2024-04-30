@@ -1,6 +1,7 @@
 import { Type } from 'class-transformer';
 import { IsElegible } from '../decorators';
 import { ConsumptionHistoryDto } from '.';
+import { CpfCnpjValidator } from '../validators';
 import { 
     ConnectionTypeEnum, 
     ConsumptionClassEnum, 
@@ -10,17 +11,14 @@ import {
     IsEnum, 
     IsNotEmpty, 
     IsString, 
-    ValidateNested, 
-    Matches 
+    Validate, 
+    ValidateNested
 } from 'class-validator';
 
 export class ClientDataDto {
     @IsString()
     @IsNotEmpty()
-    @Matches(/^\d{11}$|^\d{14}$/, { 
-        message: 'The document number must be a valid CPF with 11 digits '
-        + 'or a valid CNPJ with 14 digits' 
-    })
+    @Validate(CpfCnpjValidator)
     documentNumber: string;
 
     @IsNotEmpty()
